@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
         
 }, { timestamps: true }); // Ajoute automatiquement createdAt et updatedAt
 
+
 const User = mongoose.model("User", userSchema);
 
 

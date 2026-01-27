@@ -17,10 +17,18 @@ export const signup = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Avatar aléatoire (API gratuite)
-        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
 
-        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+        const seed = encodeURIComponent(username);
+
+        // On définit des styles différents selon le genre pour Lorelei (ou autre style)
+        // 'top' et 'hair' sont des options que tu peux varier
+        const boyOptions = encodeURIComponent('hair=short'); 
+        const girlOptions = encodeURIComponent('hair=long');
+
+        // Avatar aléatoire (API gratuite)
+        const boyProfilePic = `https://api.dicebear.com/9.x/lorelei/svg?seed=${seed}&${boyOptions}`;
+
+        const girlProfilePic = `https://api.dicebear.com/9.x/lorelei/svg?seed=${seed}&${girlOptions}`;
 
         const newUser = new User({
             fullName,
