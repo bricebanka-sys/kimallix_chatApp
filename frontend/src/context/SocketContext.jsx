@@ -20,7 +20,7 @@ export const SocketContextProvider = ({ children }) => {
     let newSocket; // Variable temporaire pour éviter les conflits de rendu
 
     if (authUser) {
-        newSocket = io("http://localhost:5000", {
+        newSocket = io("https://kimallix-chatapp.onrender.com/", {
             query: { userId: authUser._id },
         });
 
